@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+
+<br><br>
+<button class="btn btn-primary"(click)="viewcart()">view cart</button>
+
+<div class="container">
+    <div class="row p-2">
+        <div class="col-md-4 mt-3"  *ngFor="let p of sudheer">
+       
+            <div class="card shadow border-0">
+                <div class="card-header">
+                    <img class="card-img-top" height="200" [src]="p.productImg" alt="">
+    
+                </div>
+                <div class="card-body">
+
+                    <div *ngIf="p.pedit">
+                        <input type="text"[(ngModel)]="p.productName">
+                        <input type="text"[(ngModel)]="p.productFeatures">
+                        <input type="text"[(ngModel)]="p.productPrice">
+
+                    </div>
+                    <div *ngIf="!p.pedit">
+                    
+                    <h1>{{p.productName}}</h1>
+                    <h1>{{p.productFeatures}}</h1>
+                    <h4>{{p.productPrice|currency:'INR'}}</h4>
+
+                </div>
+                <div class="card-footer">
+            
+                 
+                    <button class="btn btn-dark m-1" (click)="cart(p)" >Add to cart</button>
+                    <button class="btn btn-warning m-2">Buy Now</button>
+                   
+                        <button  *ngIf="p.pedit" class="btn btn-primary m-2"(click)="updatecon(p)">update</button>
+                        <button  *ngIf="!p.pedit" class="btn btn-info m-2"(click)="editcon(p)">edit</button>
+                    
+                    <!-- <button class="btn btn-danger"(click)="deleteItem(p)">delete</button> -->
+
+                    <button class="border-0" (click)="deleteItem(p)"><i class="fa-solid fa-trash fa-beat fa-lg" style="color: #7e0101;"></i></button>
+          
+
+
+                </div>
+                
+            </div>
+            <!-- <br>
+                    <br>
+                    <br> -->
+    </div>
+   </div>
+   </div> 
+
+
+<!-- 
+   <div class="container">
+   
+    <div class="row p-2">
+        
+        <div class="col-md-4 mt-3"  *ngFor="let p of products">
+            
+        <div class="card shadow border-0">
+            <div class="card-header">
+                <img class="card-img-top" height="200" [src]="p.productImg" alt="">
+
+            </div>
+            
+            <div class="card-body">
+                <h1>{{p.productName}}</h1>
+                <p>{{p.productFeatures}}</p>
+            </div>
+            
+            <div class="card-footer">
+                <div class="col-md-4"></div>
+                <h4>{{p.productPrice| currency:"INR"}}</h4> 
+                <button class="btn btn-dark m-3">Add to cart</button>
+               
+             
+                <button class="btn btn-warning m-3">Buy Now</button>
+                <button class="border-0" (click)="(p)"><i class="fa-solid fa-trash fa-beat fa-lg" style="color: #7e0101;"></i></button>
+          
+        </div>
+        </div>
+    </div>
+    </div>
+</div> -->
